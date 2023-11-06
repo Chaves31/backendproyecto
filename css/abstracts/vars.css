@@ -1,0 +1,30 @@
+/**/
+:root{
+
+    /*Font family*/
+    --ff-main: 'Poppins', sans-serif;
+    --ff-secondary: 'Roboto', sans-serif;
+
+    /*Colors*/
+    --clr-white: hsla(0, 0%, 100%, 1);
+    --clr-blue: hsla(207, 66%, 11%, 1);
+    --clr-light-blue: hsla(213, 42%, 17%);
+    --clr-extra-light-blue: rgb(45, 65, 88);
+    --clr-yellow: hsla(34, 86%, 55%, 1);
+    --clr-dark-gray: hsla(0, 0%, 35%, 1);
+    --clr-light-gray: hsla(0, 0%, 51%, 1);
+    --clr-borders: hsla(0, 3%, 86%, 1);
+    --clr-registred: rgb(247, 219, 219);
+
+    /*Font Weights*/
+    --fw-bd: 700;
+    --fw-md: 500;
+    --fw-rg: 400;
+
+    /*Font Sizes*/
+    --fs-xl: 4.375rem; /*70 píxeles*/
+    --fs-lg: 2.5rem; /*40 píxeles*/
+    --fs-md: 1.25rem; /*20 píxeles*/
+    --fs-nm: 1.125rem; /*18 píxeles*/
+    --fs-sm: 1rem; /*16 píxeles*/
+}

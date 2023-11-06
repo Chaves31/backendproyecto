@@ -1,0 +1,10 @@
+.banner{
+    background: url(../../imgs/Ingredients_Home.webp);
+    background-position: center;
+    background-size: cover;
+    color: var(--clr-white);
+    height: min(48rem, 50rem, 55rem);
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
