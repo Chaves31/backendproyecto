@@ -1,5 +1,5 @@
 <?php
-    require_once '../database.php';
+    require_once './database.php';
 ?>
 
 
@@ -23,10 +23,10 @@
                 <span class="bar3"></span>
             </div>
             <ul class="nav-list">
-                <li><a class="nav-link link" href="home.html">Home</a></li>
-                <li><a class="nav-link link" href="categories.html">Menu</a></li>
-                <li><a class="nav-link link" href="login.html">Login</a></li>
-                <li><a class="nav-link link" href="sing-up.html">Sign Up</a></li>
+                <li><a class="nav-link link" href="home.php">Home</a></li>
+                <li><a class="nav-link link" href="categories.php">Menu</a></li>
+                <li><a class="nav-link link" href="login.php">Login</a></li>
+                <li><a class="nav-link link" href="sing-up.php">Sign Up</a></li>
                 <li><a class="nav-link link" href="#">Your Cart</a></li>
             </ul>
         </nav>

@@ -1,5 +1,5 @@
 <?php
-    require_once '../database.php';
+    require_once './database.php';
 ?>
 
 <!DOCTYPE html>
@@ -21,10 +21,10 @@
                 <span class="bar3"></span>
             </div>
             <ul class="nav-list">
-                <li><a class="nav-link link" href="home.html">Home</a></li>
-                <li><a class="nav-link link" href="categories.html">Menu</a></li>
-                <li><a class="nav-link link" href="login.html">Login</a></li>
-                <li><a class="nav-link link" href="sing-up.html">Sign Up</a></li>
+                <li><a class="nav-link link" href="home.php">Home</a></li>
+                <li><a class="nav-link link" href="categories.php">Menu</a></li>
+                <li><a class="nav-link link" href="login.php">Login</a></li>
+                <li><a class="nav-link link" href="sing-up.php">Sign Up</a></li>
                 <li><a class="nav-link link" href="#">Your Cart</a></li>
             </ul>
         </nav>
@@ -73,34 +73,17 @@
             <hr class="line">
             <div class="latest-container">
                 <div class="showned-dish-container">
-                    <div>
-                        <img class="img" src="./imgs/lasagna.webp" alt="Lasagna">
-                    </div>
-                    <section class="information-container">
-                        <h3 class="sub-sub-title">Lorem Ipsum</h3>
-                        <p class="regular-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit in dignissimnisl.</p>
-                        <a class="btn-prices btn-base" href="details.html">&dollar;10.99 || Order Now</a>
-                    </section>
-                </div>
-                <div class="showned-dish-container">
-                    <div>
-                        <img class="img" src="./imgs/lasagna.webp" alt="Lasagna">
-                    </div>
-                    <section class="information-container">
-                        <h3 class="sub-sub-title">Lorem Ipsum</h3>
-                        <p class="regular-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit in dignissimnisl.</p>
-                        <a class="btn-prices btn-base" href="details.html">&dollar;10.99 || Order Now</a>
-                    </section>
-                </div>
-                <div class="showned-dish-container">
-                    <div>
-                        <img class="img" src="./imgs/lasagna.webp" alt="Lasagna">
-                    </div>
-                    <section class="information-container">
-                        <h3 class="sub-sub-title">Lorem Ipsum</h3>
-                        <p class="regular-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit in dignissimnisl.</p>
-                        <a class="btn-prices btn-base" href="details.html">&dollar;10.99 || Order Now</a>
-                    </section>
+                <?php
+                    echo "<div>";
+                        echo "<img class='img' src='./imgs/lasagna.webp' alt='Lasagna'>";
+                    echo "</div>";
+                    echo "<section class='information-container'>";
+                        echo "<h3 class='sub-sub-title'>Lorem Ipsum</h3>";
+                        echo "<p class='regular-text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit in dignissimnisl.</p>";
+                        echo "<a class='btn-prices btn-base' href='details.html'>&dollar;10.99 || Order Now</a>";
+                    echo "</section>";
+                    echo "</div>";
+                ?>
                 </div>
             </div>
         </section>
@@ -109,175 +92,24 @@
             <hr class="line">
             <div class="top-dishes-container">
                 <div class="best-sellers-container">
-                    <div class="number-container">
-                        <p>#1</p>
-                    </div>
-                    <div>
-                        <img class="img" src="./imgs/lasagna.webp" alt="Lasagna">
-                    </div>
-                    <section class="section-info">
-                        <h3 class="sub-sub-title">Lorem Ipsum</h3>
-                        <div class="categories-and-servers">
-                            <h4>Category</h4>
-                            <h4>Servers</h4>
-                        </div>
-                        <p class="regular-text">Lorem ipsum dolor sit amet, congueriu consectetur adipiscing elit in nequema dignisim nisl crumer.</p>
-                        <a class="btn-prices btn-base margin-none" href="details.html">&dollar;10.99 || Order Now</a>
-                    </section>
-                </div>
-                <div class="best-sellers-container">
-                    <div class="number-container">
-                        <p>#2</p>
-                    </div>
-                    <div>
-                        <img class="img" src="./imgs/lasagna.webp" alt="Lasagna">
-                    </div>
-                    <section class="section-info">
-                        <h3 class="sub-sub-title">Lorem Ipsum</h3>
-                        <div class="categories-and-servers">
-                            <h4>Category</h4>
-                            <h4>Servers</h4>
-                        </div>
-                        <p class="regular-text">Lorem ipsum dolor sit amet, congueriu consectetur adipiscing elit in nequema dignisim nisl crumer.</p>
-                        <a class="btn-prices btn-base margin-none" href="details.html">&dollar;10.99 || Order Now</a>
-                    </section>
-                </div>
-                <div class="best-sellers-container">
-                    <div class="number-container">
-                        <p>#3</p>
-                    </div>
-                    <div>
-                        <img class="img" src="./imgs/lasagna.webp" alt="Lasagna">
-                    </div>
-                    <section class="section-info">
-                        <h3 class="sub-sub-title">Lorem Ipsum</h3>
-                        <div class="categories-and-servers">
-                            <h4>Category</h4>
-                            <h4>Servers</h4>
-                        </div>
-                        <p class="regular-text">Lorem ipsum dolor sit amet, congueriu consectetur adipiscing elit in nequema dignisim nisl crumer.</p>
-                        <a class="btn-prices btn-base margin-none" href="details.html">&dollar;10.99 || Order Now</a>
-                    </section>
-                </div>
-                <div class="best-sellers-container">
-                    <div class="number-container">
-                        <p>#4</p>
-                    </div>
-                    <div>
-                        <img class="img" src="./imgs/lasagna.webp" alt="Lasagna">
-                    </div>
-                    <section class="section-info">
-                        <h3 class="sub-sub-title">Lorem Ipsum</h3>
-                        <div class="categories-and-servers">
-                            <h4>Category</h4>
-                            <h4>Servers</h4>
-                        </div>
-                        <p class="regular-text">Lorem ipsum dolor sit amet, congueriu consectetur adipiscing elit innequema dignisim nisl crumer.</p>
-                        <a class="btn-prices btn-base margin-none" href="details.html">&dollar;10.99 || Order Now</a>
-                    </section>
-                </div>
-                <div class="best-sellers-container">
-                    <div class="number-container">
-                        <p>#5</p>
-                    </div>
-                    <div class="img-container">
-                        <img class="img" src="./imgs/lasagna.webp" alt="Lasagna">
-                    </div>
-                    <section class="section-info">
-                        <h3 class="sub-sub-title">Lorem Ipsum</h3>
-                        <div class="categories-and-servers">
-                            <h4>Category</h4>
-                            <h4>Servers</h4>
-                        </div>
-                        <p class="regular-text">Lorem ipsum dolor sit amet, congueriu consectetur adipiscing elit in nequema dignisim nisl crumer.</p>
-                        <a class="btn-prices btn-base margin-none" href="details.html">&dollar;10.99 || Order Now</a>
-                    </section>
-                </div>
-                <div class="best-sellers-container">
-                    <div class="number-container">
-                        <p>#6</p>
-                    </div>
-                    <div>
-                        <img class="img" src="./imgs/lasagna.webp" alt="Lasagna">
-                    </div>
-                    <section class="section-info">
-                        <h3 class="sub-sub-title">Lorem Ipsum</h3>
-                        <div class="categories-and-servers">
-                            <h4>Category</h4>
-                            <h4>Servers</h4>
-                        </div>
-                        <p class="regular-text">Lorem ipsum dolor sit amet, congueriu consectetur adipiscing elit in nequema dignisim nisl crumer.</p>
-                        <a class="btn-prices btn-base margin-none" href="details.html">&dollar;10.99 || Order Now</a>
-                    </section>
-                </div>
-                <div class="best-sellers-container">
-                    <div class="number-container">
-                        <p>#7</p>
-                    </div>
-                    <div>
-                        <img class="img" src="./imgs/lasagna.webp" alt="Lasagna">
-                    </div>
-                    <section class="section-info">
-                        <h3 class="sub-sub-title">Lorem Ipsum</h3>
-                        <div class="categories-and-servers">
-                            <h4>Category</h4>
-                            <h4>Servers</h4>
-                        </div>
-                        <p class="regular-text">Lorem ipsum dolor sit amet, congueriu consectetur adipiscing elit in nequema dignisim nisl crumer.</p>
-                        <a class="btn-prices btn-base margin-none" href="details.html">&dollar;10.99 || Order Now</a>
-                    </section>
-                </div>
-                <div class="best-sellers-container">
-                    <div class="number-container">
-                        <p>#8</p>
-                    </div>
-                    <div>
-                        <img class="img" src="./imgs/lasagna.webp" alt="Lasagna">
-                    </div>
-                    <section class="section-info">
-                        <h3 class="sub-sub-title">Lorem Ipsum</h3>
-                        <div class="categories-and-servers">
-                            <h4>Category</h4>
-                            <h4>Servers</h4>
-                        </div>
-                        <p class="regular-text">Lorem ipsum dolor sit amet, congueriu consectetur adipiscing elit in nequema dignisim nisl crumer.</p>
-                        <a class="btn-prices btn-base margin-none" href="details.html">&dollar;10.99 || Order Now</a>
-                    </section>
-                </div>
-                <div class="best-sellers-container">
-                    <div class="number-container">
-                        <p>#9</p>
-                    </div>
-                    <div>
-                        <img class="img" src="./imgs/lasagna.webp" alt="Lasagna">
-                    </div>
-                    <section class="section-info">
-                        <h3 class="sub-sub-title">Lorem Ipsum</h3>
-                        <div class="categories-and-servers">
-                            <h4>Category</h4>
-                            <h4>Servers</h4>
-                        </div>
-                        <p class="regular-text">Lorem ipsum dolor sit amet, congueriu consectetur adipiscing elit in nequema dignisim nisl crumer.</p>
-                        <a class="btn-prices btn-base margin-none" href="details.html">&dollar;10.99 || Order Now</a>
-                    </section>
-                </div>
-                <div class="best-sellers-container">
-                    <div class="number-container">
-                        <p>#10</p>
-                    </div>
-                    <div>
-                        <img class="img" src="./imgs/lasagna.webp" alt="Lasagna">
-                    </div>
-                    <section class="section-info">
-                        <h3 class="sub-sub-title">Lorem Ipsum</h3>
-                        <div class="categories-and-servers">
-                            <h4>Category</h4>
-                            <h4>Servers</h4>
-                        </div>
-                        <p class="regular-text">Lorem ipsum dolor sit amet, congueriu consectetur adipiscing elit in nequema dignisim nisl crumer.</p>
-                        <a class="btn-prices btn-base margin-none" href="details.html">&dollar;10.99 || Order Now</a>
-                    </section>
-                </div>
+                <?php
+                    echo "<div class='number-container'>";
+                        echo "<p>#1</p>";
+                    echo "</div>";
+                    echo "<div>";
+                        echo "<img class='img' src='./imgs/lasagna.webp' alt='Lasagna'>";
+                    echo "</div>";
+                    echo "<section class='section-info'>";
+                        echo "<h3 class='sub-sub-title'>Lorem Ipsum</h3>";
+                        echo "<div class='categories-and-servers'>";
+                            echo "<h4>Category</h4>";
+                            echo "<h4>Servers</h4>";
+                        echo "</div>";
+                        echo "<p class='regular-text'>Lorem ipsum dolor sit amet, congueriu consectetur adipiscing elit in nequema dignisim nisl crumer.</p>";
+                        echo "<a class='btn-prices btn-base margin-none' href='details.html'>&dollar;10.99 || Order Now</a>";
+                    echo "</section>";
+                    echo "</div>";
+                ?>
             </div>
         </section>
     </main>
