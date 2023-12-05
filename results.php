@@ -1,13 +1,14 @@
 <?php
     require_once './database.php';
-
     // Reference: https://medoo.in/api/select
-    $items = $database->select("tb_dishes","*");
 
-    $quantities = $database->select("tb_quantities","*");
+    if(isset($_GET["keyword"])){
 
-    // Reference: https://medoo.in/api/select
-    $categories_items = $database->select("tb_dishes", "*");
+        $items = $database->select("tb_dishes","*",["dish_name[~]" => $_GET["keyword"]]);
+
+    }else{
+        echo "notfound";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -38,23 +39,25 @@
             </form>
             <div class="dishes-categories-container">
                 <?php
-                    
+                if(count($items) > 0){
                     foreach($items as $item){
                         echo "<div class='showned-dish-container'>";
-                                    echo "<div>";
-                                        echo "<img class='img' src='./imgs/".$item["dish_image"]."' alt='".$item["dish_name"]."'>";
-                                    echo "</div>";
-                                    echo "<section class='information-container'>";
-                                        echo "<h3 class='sub-sub-title'>".$item["dish_name"]."</h3>";
-                                        echo "<p class='regular-text'>".substr($item["dish_description"], 0, 60)."...</p>";
-                                        echo "<a class='btn-prices btn-base' href='details.php?id=".$item["id_dish"]."'>$".$item["dish_price"]." || Order Now</a>";
-                                    echo "</section>";
+                                echo "<div>";
+                                    echo "<img class='img' src='./imgs/".$item["dish_image"]."' alt='".$item["dish_name"]."'>";
                                 echo "</div>";
+                                echo "<section class='information-container'>";
+                                    echo "<h3 class='sub-sub-title'>".$item["dish_name"]."</h3>";
+                                    echo "<p class='regular-text'>".substr($item["dish_description"], 0, 60)."...</p>";
+                                    echo "<a class='btn-prices btn-base' href='details.php?id=".$item["id_dish"]."'>$".$item["dish_price"]." || Order Now</a>";
+                                echo "</section>";
+                            echo "</div>";
                     }
+                }
                     
+                ?>
+                
                         
-                    ?>
-                </div>
+            </div>
         </section>
     </main>
     <?php
