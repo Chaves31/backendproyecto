@@ -11,24 +11,9 @@
     <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
-    <header>
-        <nav class="nav">
-            <a href="home.html"><img class="logo" src="./imgs/icons/logo.svg" alt="Logo"></a>
-            <input class="mobile-check" type="checkbox">
-            <div class="bar-container">
-                <span class="bar1"></span>
-                <span class="bar2"></span>
-                <span class="bar3"></span>
-            </div>
-            <ul class="nav-list">
-                <li><a class="nav-link link" href="home.php">Home</a></li>
-                <li><a class="nav-link link" href="categories.php">Menu</a></li>
-                <li><a class="nav-link link" href="login.php">Login</a></li>
-                <li><a class="nav-link link" href="sing-up.php">Sign Up</a></li>
-                <li><a class="nav-link link" href="#">Your Cart</a></li>
-            </ul>
-        </nav>
-    </header>
+    <?php
+        include "./parts/header.php";
+    ?>
     <main class="access-main-container">
         <div class="form-container">
             <h2 class="form-title">Login</h2>

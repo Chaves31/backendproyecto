@@ -4,7 +4,7 @@
     border-radius: 0.7rem;
     background-color: var(--clr-white);
     border: 0.19rem solid var(--clr-borders);
-    margin: 1rem 0 1rem;
+    margin: 1rem 28.5rem 1rem;
     width: 25%;
 }
 
@@ -25,6 +25,14 @@
 .search-btn{
     border: none;
     background-color: var(--clr-white);
+}
+
+.form-items{
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    margin: .5rem 0;
+    align-items: center;
 }
 
 /*Log In and Sign Up*/

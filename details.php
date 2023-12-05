@@ -1,5 +1,61 @@
 <?php
     require_once './database.php';
+
+    $link = "";
+    $url_params = "";
+    $lang = "";
+
+    if($_GET){
+        if(isset($_GET["lang"]) && $_GET["lang"] == "it"){
+            // Reference: https://medoo.in/api/where
+            /*$item = $database->select("tb_dishes","*",[
+                "id_dish"=>$_GET["id"]
+            ]);*/
+
+            // Reference: https://medoo.in/api/select
+            // Note: don't delete the [>] Es el ineer join
+            $item = $database->select("tb_dishes",[
+                "[>]tb_categories"=>["id_category" => "id_category"],
+                "[>]tb_quantities"=>["id_quantity" => "id_quantity"]
+            ],[
+                "tb_dishes.id_dish",
+                "tb_dishes.dish_name_it",
+                "tb_dishes.dish_description_it",
+                "tb_dishes.dish_image",
+                "tb_dishes.dish_price",
+                "tb_categories.category_name",
+                "tb_quantities.quantity_name",
+            ],[
+                "id_dish"=>$_GET["id"]
+            ]);
+
+            $item[0]["dish_name"] = $item[0]["dish_name_it"];
+            $item[0]["dish_description"] = $item[0]["dish_description_it"];
+
+            $url_params = "id=".$item[0]["id_dish"];
+            $lang = "EN";
+        }else{
+            $item = $database->select("tb_dishes",[
+                "[>]tb_categories"=>["id_category" => "id_category"],
+                "[>]tb_quantities"=>["id_quantity" => "id_quantity"]
+            ],[
+                "tb_dishes.id_dish",
+                "tb_dishes.dish_name",
+                "tb_dishes.dish_description",
+                "tb_dishes.dish_image",
+                "tb_dishes.dish_price",
+                "tb_categories.category_name",
+                "tb_quantities.quantity_name",
+            ],[
+                "id_dish"=>$_GET["id"]
+            ]);
+
+            $url_params = "id=".$item[0]["id_dish"]."&lang=it";
+            $lang = "IT";
+        }
+
+        
+    }
 ?>
 
 
@@ -13,54 +69,38 @@
     <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
-    <header class="header-container">
-        <nav class="nav">
-            <a href="home.html"><img class="logo" src="./imgs/icons/logo.svg" alt="Logo"></a>
-            <input class="mobile-check" type="checkbox">
-            <div class="bar-container">
-                <span class="bar1"></span>
-                <span class="bar2"></span>
-                <span class="bar3"></span>
-            </div>
-            <ul class="nav-list">
-                <li><a class="nav-link link" href="home.php">Home</a></li>
-                <li><a class="nav-link link" href="categories.php">Menu</a></li>
-                <li><a class="nav-link link" href="login.php">Login</a></li>
-                <li><a class="nav-link link" href="sing-up.php">Sign Up</a></li>
-                <li><a class="nav-link link" href="#">Your Cart</a></li>
-            </ul>
-        </nav>
-    </header>
+    <?php
+        include "./parts/header.php";
+    ?>
     <main class="main-details-container">
         <div class="full-width details-section">
-            <div class="details-img-container">
-                <button class="translate-btn" type="submit"><img class="icons" src="./imgs/icons/translate.svg" alt="Translate"></button>
-                <img class="img" src="./imgs/lasagna.webp" alt="Dish Image">
-            </div>
-            <section class="full-width">
-                <h3 class="sub-sub-title">Insert Name Here</h3>
-                <div class="categories-and-servers">
-                    <h4>Category</h4>
-                    <h4>Servers</h4>
-                    <h4>Status</h4>
-                </div>
-                <p class="regular-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit in dignissim nisl nec nibh interdum, fringilla est vel, dapibus 
-                lacus. Nulla eget diam vel erat convallis sagittis nec eu ex. Suspendisse pellentesque pharetra risus, id egestas eros, 
-                Praesent et lorem orci. Donec nunc mi, iaculis sit amet magna quis, pellentesque efficitur magna. In egestas mi 
-                metus, sed mollis neque porttitor non. Integer consectetur venenatis mi, ac suscipit turpis porta id.</p>
-                <h4 class="regular-text medium-text margin-none">Ready to Order?</h4>
-                <p class="regular-text">Remember that we offer three ordering methods:</p>
-                <ul class="list-ordering-methods regular-text">
-                    <li class="ordering-methods-list">Room</li>
-                    <li class="ordering-methods-list">Express</li>
-                    <li class="ordering-methods-list">Drop into take away</li>
-                </ul>
-                <p class="regular-text margin-none">Price</p>
-                <p class="price-text">&dollar;10.99</p>
-                <div class="btn-cart-container">
-                    <button class="btn-cart btn-base"> <img class="shopping-cart-icon" src="./imgs/icons//shopping-cart.svg" alt="Shopping Cart"> Add to cart</button>
-                </div>
-            </section>
+            <?php
+                echo "<div class='details-img-container'>";
+                    echo "<span class='translate-btn' type='submit' id='lang' onclick='getTranslation(".$item[0]["id_dish"].")'><img class='icons' src='./imgs/icons/translate.svg' alt='Translate'>IT</span>";
+                    echo "<img class='img' src='./imgs/".$item[0]["dish_image"]."' alt='".$item[0]["dish_name"]."'>";
+                echo "</div>";
+                echo "<section class='full-width'>";
+                    echo "<h3 class='sub-sub-title'>".$item[0]["dish_name"]."</h3>";
+                    echo "<div class='categories-and-servers'>";
+                        echo "<h4>".$item[0]["category_name"]."</h4>";
+                        echo "<h4>".$item[0]["quantity_name"]."</h4>";
+                    echo "</div>";
+                    echo "<p class='regular-text'>".$item[0]["dish_description"]."</p>";
+                    echo "<h4 class='regular-text medium-text margin-none'>Ready to Order?</h4>";
+                    echo "<p class='regular-text'>Remember that we offer three ordering methods:</p>";
+                    echo "<ul class='list-ordering-methods regular-text'>";
+                        echo "<li class='ordering-methods-list'>Room</li>";
+                        echo "<li class='ordering-methods-list'>Express</li>";
+                        echo "<li class='ordering-methods-list'>Drop into take away</li>";
+                    echo "</ul>";
+                    echo "<p class='regular-text margin-none'>Price</p>";
+                    echo "<p class='price-text'>$".$item[0]["dish_price"]."/p>";
+                    echo "<div class='btn-cart-container'>";
+                        echo "<a class='btn-cart btn-base' href='cart.php?id=".$item[0]["id_dish"]."'> <img class='shopping-cart-icon' src='./imgs/icons//shopping-cart.svg' alt='Shopping Cart'> Add to cart</a>";
+                    echo "</div>";
+                echo "</section>";
+            ?>
+            
         </div>
         <aside class="recommendations-aside">
             <h3 class="subtitle margin-none">You'll Also Love</h3>
@@ -88,40 +128,47 @@
             </div>
         </aside>
     </main>
-    <footer class="footer-container">
-        <div class="footer-content">
-            <div class="footer-info">
-                <a href="#"><img class="logo" src="./imgs/icons/logo.svg" alt="Logo"></a>
-                <p class="footer-text">Discover authentic Italy in every dish at Mangica. Our handcrafted menu takes you on a unique culinary journey. Welcome to our Italian table, where the passion for the food meets the freshness of the ingredients.</p>
-            </div>
-            <div class="footer-links">
-                <div>
-                    <h3>Help</h3>
-                    <ul class="nav-bottom-list">
-                        <li><a class="link" href="#">Some FAQ</a></li>
-                        <li><a class="link" href="#">Policies</a></li>
-                        <li><a class="link" href="#">Privacy</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>About Us</h3>
-                    <ul class="nav-bottom-list">
-                        <li><a class="link" href="#">Our Story</a></li>
-                        <li><a class="link" href="#">Our Team</a></li>
-                        <li><a class="link" href="#">Our Location</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Contact Us</h3>
-                    <ul class="nav-bottom-list">
-                        <li><a class="link" href="#">Facebook</a></li>
-                        <li><a class="link" href="#">Instagram</a></li>
-                        <li><a class="link" href="#">Tiktok</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <p class="footer-legal">&copy; 2023. Mangica. All rights reserved.</p>
-    </footer>
+    <?php
+        include "./parts/footer.php";
+    ?>
+
+    <script>
+
+    let requestLang = "it";
+
+    function switchLang(){
+        if(requestLang == "en") requestLang = "it";
+        else requestLang = "en";
+        document.getElementById("lang").innerText = requestLang;
+    }
+
+    function getTranslation(id){
+
+        let info = {
+            id_dish: id,
+            language: requestLang
+        };
+
+        //fetch
+        fetch("http://localhost/backendproyecto/language.php",{
+            method: "POST",
+            mode: "same-origin",
+            credentials: "same-origin",
+            headers:{
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(info)
+        })
+        .then(response => response.json())
+        .then(data => {
+
+            switchLang();
+            document.getElementById("dish-name").innerText = data.name;
+            document.getElementById("dish-description").innerText = data.description;
+        })
+        .catch(err => console.log("error: " + err));
+    }
+    </script>
 </body>
 </html>

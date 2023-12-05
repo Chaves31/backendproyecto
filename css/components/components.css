@@ -99,8 +99,9 @@
 .btn-cart{
     background-color: var(--clr-blue);
     color: var(--clr-white);
-    width: 30%;
+    width: 50%;
     border: none;
+    margin: 1rem 0 0;
 }
 
 .btn-cart:hover{
